@@ -1,8 +1,7 @@
 import React from 'react';
 import '../css/ItemPreview.css';
 
-function ItemPreview(props) {
-    const data = props.data;
+function ItemPreview({data}) {
     const itemURL = `/item/${data.id}`
     const imageSRC = data.img + "?height=200"
     return (
