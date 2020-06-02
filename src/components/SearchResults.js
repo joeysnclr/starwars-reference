@@ -22,7 +22,7 @@ function SearchResults() {
                     setTimeout(() => {
                         setItems(data);
                         setLoading(false);
-                    }, 50000);
+                    }, 500);
                     console.log(data);
                 });
         },
