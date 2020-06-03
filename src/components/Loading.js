@@ -1,6 +1,5 @@
 import React from "react";
 import "../css/Loading.css";
-import "loaders.css";
 
 export default function Loading({ loading }) {
     if (loading) {

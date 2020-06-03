@@ -4,18 +4,15 @@ import ItemPreview from "./ItemPreview";
 import Loading from "./Loading";
 import Pagination from "./Pagination";
 
-// import '../css/Home.css';
-
-function SearchResults() {
-    const { query } = useParams();
+export default function Media() {
+    const { id } = useParams();
     const [items, setItems] = React.useState([]);
     const [loading, setLoading] = React.useState(false);
-
     React.useEffect(
         function () {
             setLoading(true);
             fetch(
-                `https://star-wars-databank-api.herokuapp.com/api/search/${query}`
+                `https://star-wars-databank-api.herokuapp.com/api/appearances/${id}`
             )
                 .then((response) => response.json())
                 .then((data) => {
@@ -26,15 +23,18 @@ function SearchResults() {
                     console.log(data);
                 });
         },
-        [query]
+        [id]
     );
+
     return (
-        <div class="container">
-            <h1>Search Results</h1>
+        <div className='container'>
+            <h1>{id}</h1>
             <Loading loading={loading} />
-            {!loading && <Pagination items={items} Component={ItemPreview} />}
+            {loading ? (
+                <></>
+            ) : (
+                <Pagination items={items} Component={ItemPreview} />
+            )}
         </div>
     );
 }
-
-export default SearchResults;
